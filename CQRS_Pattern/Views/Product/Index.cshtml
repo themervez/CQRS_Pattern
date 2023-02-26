@@ -1,0 +1,40 @@
+﻿@model List<GetProductAccountantQueryResult>
+@{
+    Layout = null;
+    int count = 0;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <h2>Muhasebe Personel Paneli</h2>
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ürün Adı</th>
+            <th>Marka</th>
+            <th>Stok Sayısı</th>
+            <th>Detaylar İK</th>
+            <th>Detaylar Muhasebe</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>@item.Brand</td>
+                <td>@item.Stock</td>
+                <td><a href="/Product/GetHRByIDIndex/@item.ID" class="btn btn-outline-dark">Detaylar</a></td>
+                <td><a href="/Product/AccountantIndexByID/@item.ID" class="btn btn-outline-dark">Muhasebe</a></td>
+                <td><a href="#" class="btn btn-danger">Sil</a></td>
+                <td><a href="#" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="#" class="btn btn-outline-primary">Yeni Kayıt</a>
+</div>

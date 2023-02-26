@@ -1,0 +1,38 @@
+﻿@model List<GetAllStudentQueryResult>
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <h2>Öğrenci Listesi</h2>
+    <br />
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Öğrenci Adı</th>
+            <th>Öğrenci Soyadı</th>
+            <th>Şehir</th>
+            <th>Bölüm</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.City</td>
+                <td>@item.Department</td>
+                <td><a href="/Student/DeleteStudent/@item.ID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Student/UpdateStudent/@item.ID" class="btn btn-success">Güncelle</a></td>
+                <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Student/AddStudent" class="btn btn-primary">Yeni Öğrenci Girişi</a>
+</div>

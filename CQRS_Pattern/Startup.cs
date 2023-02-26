@@ -1,4 +1,5 @@
 using CQRS_Pattern.CQRS.Handlers.ProductHandlers;
+using CQRS_Pattern.CQRS.Handlers.StudentHandlers;
 using CQRS_Pattern.DAL.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,11 @@ namespace CQRS_Pattern
             services.AddScoped<GetProductHRByIDQueryHandler>();
             services.AddScoped<GetProductAccountantByIDQueryHandler>();
             services.AddScoped<CreateProductCommandHandler>();
+            services.AddScoped<CreateStudentCommandHandler>();
+            services.AddScoped<GetAllStudentQueryHandler>();
+            services.AddScoped<RemoveStudentCommandHandler>();
+            services.AddScoped<GetStudentByIDQueryHandler>();
+            services.AddScoped<UpdateStudentCommandHandler>();
             services.AddControllersWithViews();
         }
 

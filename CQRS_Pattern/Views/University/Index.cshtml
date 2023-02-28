@@ -1,0 +1,34 @@
+﻿@model List<GetAllUniversityQueryResult>
+@{
+    Layout = null;
+   int count = 0;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <h2>Üniversite Listesi</h2>
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Üniversite</th>
+            <th>Şehir</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>@item.Town</td>
+                <td><a href="/University/DeleteUniversity/@item.ID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/University/UpdateUniversity/@item.ID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/University/AddUniversity" class="btn btn-outline-primary">Üniversite Ekle</a>
+</div>

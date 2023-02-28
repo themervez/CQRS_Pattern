@@ -1,6 +1,8 @@
 using CQRS_Pattern.CQRS.Handlers.ProductHandlers;
 using CQRS_Pattern.CQRS.Handlers.StudentHandlers;
 using CQRS_Pattern.DAL.Context;
+using CQRS_Pattern.DIContainer;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,17 +28,8 @@ namespace CQRS_Pattern
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductContext>();
-            services.AddScoped<GetProductAccountantQueryHandler>();
-            services.AddScoped<GetProductWarehouseAttendantQueryHandler>();
-            services.AddScoped<GetProductHRByIDQueryHandler>();
-            services.AddScoped<GetProductAccountantByIDQueryHandler>();
-            services.AddScoped<CreateProductCommandHandler>();
-            services.AddScoped<CreateStudentCommandHandler>();
-            services.AddScoped<GetAllStudentQueryHandler>();
-            services.AddScoped<RemoveStudentCommandHandler>();
-            services.AddScoped<GetStudentByIDQueryHandler>();
-            services.AddScoped<UpdateStudentCommandHandler>();
+            services.AddMediatR(typeof(Startup));
+            services.ContainerDependencies();
             services.AddControllersWithViews();
         }
 
